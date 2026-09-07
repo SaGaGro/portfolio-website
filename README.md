@@ -22,8 +22,8 @@
 1. Clone repository และเข้าไปยังโฟลเดอร์โปรเจกต์
 
    ```bash
-   git clone <repository-url>
-   cd Frontend
+   git clone https://github.com/SaGaGro/portfolio-website.git
+   cd portfolio-website
    ```
 
 2. ติดตั้ง dependencies
