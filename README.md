@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Website
+
+เว็บไซต์ Portfolio สำหรับรวบรวมประวัติส่วนตัว ทักษะ ผลงาน และช่องทางการติดต่อ พัฒนาด้วย Next.js, TypeScript และ Tailwind CSS
+
+> โปรเจกต์อยู่ในช่วงเริ่มต้น ปัจจุบันเป็นหน้าเริ่มต้นสำหรับพัฒนาต่อยอด
+
+## Tech Stack
+
+- [Next.js 16](https://nextjs.org/) — React framework โดยใช้ App Router
+- [React 19](https://react.dev/) — สร้างส่วนติดต่อผู้ใช้
+- [TypeScript](https://www.typescriptlang.org/) — เพิ่ม type safety ให้กับโค้ด
+- [Tailwind CSS 4](https://tailwindcss.com/) — จัดการ styling แบบ utility-first
+- [ESLint](https://eslint.org/) — ตรวจสอบคุณภาพและรูปแบบของโค้ด
+
+## Requirements
+
+- Node.js 20.9 ขึ้นไป
+- npm 10 ขึ้นไป
 
 ## Getting Started
 
-First, run the development server:
+1. Clone repository และเข้าไปยังโฟลเดอร์โปรเจกต์
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+   ```bash
+   git clone <repository-url>
+   cd Frontend
+   ```
+
+2. ติดตั้ง dependencies
+
+   ```bash
+   npm install
+   ```
+
+3. เปิด development server
+
+   ```bash
+   npm run dev
+   ```
+
+4. เปิด [http://localhost:3000](http://localhost:3000) ในเบราว์เซอร์
+
+ไฟล์หน้าแรกอยู่ที่ `src/app/page.tsx` และจะอัปเดตอัตโนมัติเมื่อแก้ไขโค้ด
+
+## Available Commands
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | เปิด development server |
+| `npm run build` | สร้าง production build |
+| `npm run start` | เปิด production server หลังจาก build |
+| `npm run lint` | ตรวจสอบโค้ดด้วย ESLint |
+
+## Project Structure
+
+```text
+Frontend/
+├── public/              # Static assets
+├── src/
+│   └── app/
+│       ├── globals.css  # Global styles และ Tailwind CSS
+│       ├── layout.tsx   # Root layout
+│       └── page.tsx     # หน้าแรก
+├── eslint.config.mjs    # ESLint configuration
+├── next.config.ts       # Next.js configuration
+├── postcss.config.mjs   # PostCSS/Tailwind configuration
+├── package.json         # Scripts และ dependencies
+└── tsconfig.json        # TypeScript configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Styling
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+โปรเจกต์ใช้ Tailwind CSS 4 ผ่าน `@tailwindcss/postcss` โดย import Tailwind ใน `src/app/globals.css` สามารถใช้ utility classes ใน React components ได้ทันที
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Build for Production
 
-## Learn More
+```bash
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+ก่อน commit หรือ deploy แนะนำให้ตรวจสอบโปรเจกต์ด้วย:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run lint
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+โปรเจกต์สามารถ deploy บน [Vercel](https://vercel.com/) หรือแพลตฟอร์มอื่นที่รองรับ Next.js ได้
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+โปรเจกต์นี้จัดทำขึ้นเพื่อใช้เป็น Portfolio ส่วนบุคคล
