@@ -74,16 +74,17 @@ export function FeaturedProjectSlider({ projects }: { projects: readonly Project
 
             <div className="relative flex flex-1 items-center justify-center overflow-hidden p-5 sm:p-10">
               <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:32px_32px]" />
-              <div className={`relative w-full max-w-2xl ${project.secondaryImage ? "pb-9 pr-7 sm:pb-14 sm:pr-14" : ""}`}>
-                <div className="event-capture relative aspect-video overflow-hidden rounded-lg border border-white/20 bg-black shadow-[0_24px_70px_rgba(0,0,0,0.55)]">
-                  <Image src={project.image} alt={project.imageAlt} fill sizes="(max-width: 1024px) 80vw, 48vw" unoptimized={project.unoptimized} className="object-cover object-top transition duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#090c12]/75 via-transparent to-transparent" />
-                  <span className="absolute right-3 top-3 rounded px-2 py-1 font-mono text-[7px] font-bold uppercase tracking-[0.12em] text-[#090c12] sm:right-4 sm:top-4" style={{ backgroundColor: project.accent }}>{project.status}</span>
-                  <div className="absolute inset-x-4 bottom-4 font-mono text-[8px] uppercase tracking-[0.12em] text-white sm:inset-x-5 sm:bottom-5">{project.context}</div>
+              <div className={`relative w-full max-w-2xl ${project.secondaryImage ? "grid grid-cols-[1.35fr_0.65fr] items-center gap-3" : ""}`}>
+                <div className={`event-capture relative overflow-hidden rounded-lg border border-white/20 bg-black shadow-[0_24px_70px_rgba(0,0,0,0.55)] ${project.secondaryImage ? "aspect-[4/3]" : "aspect-video"}`}>
+                  <Image src={project.image} alt="" fill sizes="(max-width: 1024px) 80vw, 48vw" aria-hidden="true" className="scale-110 object-cover opacity-25 blur-xl" />
+                  <Image src={project.image} alt={project.imageAlt} fill sizes="(max-width: 1024px) 80vw, 48vw" unoptimized={project.unoptimized} className="z-10 object-contain object-center" />
+                  <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#090c12]/70 via-transparent to-transparent" />
+                  <span className="absolute right-3 top-3 z-30 rounded px-2 py-1 font-mono text-[7px] font-bold uppercase tracking-[0.12em] text-[#090c12] sm:right-4 sm:top-4" style={{ backgroundColor: project.accent }}>{project.status}</span>
+                  <div className="absolute inset-x-4 bottom-4 z-30 font-mono text-[8px] uppercase tracking-[0.12em] text-white sm:inset-x-5 sm:bottom-5">{project.context}</div>
                 </div>
 
                 {project.secondaryImage ? (
-                  <div className={`poster-capture absolute bottom-0 right-0 min-w-24 overflow-hidden rounded-md border border-white/25 bg-white shadow-[0_18px_46px_rgba(0,0,0,0.6)] ${project.secondaryImageOrientation === "landscape" ? "aspect-[4/3] w-[42%]" : "aspect-[3/4] w-[31%]"}`}>
+                  <div className={`supporting-media relative w-full min-w-24 overflow-hidden rounded-md border border-white/25 bg-white shadow-[0_18px_46px_rgba(0,0,0,0.6)] ${project.secondaryImageOrientation === "landscape" ? "aspect-[4/3]" : "aspect-[3/4]"}`}>
                     <Image src={project.secondaryImage} alt={project.secondaryImageAlt ?? `${project.title} supporting image`} fill sizes="(max-width: 640px) 35vw, 240px" className="object-contain object-center" />
                     <span className="absolute inset-x-0 bottom-0 bg-[#090c12]/85 px-2 py-1.5 text-center font-mono text-[7px] uppercase tracking-[0.12em] text-white backdrop-blur">{project.secondaryImageLabel ?? "Project media"}</span>
                   </div>

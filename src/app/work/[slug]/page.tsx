@@ -38,37 +38,39 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main>
-      <section className="bg-[#090c12] px-5 pb-20 pt-14 text-white sm:px-8 lg:px-12 lg:pb-28 lg:pt-20">
+      <section className="bg-[#090c12] px-5 pb-12 pt-8 text-white sm:px-8 lg:px-12 lg:pb-16 lg:pt-10">
         <div className="mx-auto max-w-[1344px]">
           <Link href="/work" className="project-back-link group inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.14em] text-white/40">
             <span className="transition-transform group-hover:-translate-x-1">←</span>
             All projects
           </Link>
 
-          <div className="mt-12 grid gap-10 border-t border-white/10 pt-6 lg:grid-cols-[0.34fr_1fr]">
+          <div className="mt-7 grid gap-7 border-t border-white/10 pt-5 lg:grid-cols-[0.27fr_1fr]">
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#72f1b8]">Case study / {project.number}</p>
               <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.13em] text-white/25">{project.context}</p>
             </div>
             <div>
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.15em]" style={{ color: project.accent }}>{project.eyebrow}</p>
-              <h1 className="mt-5 max-w-5xl text-[clamp(4.5rem,11vw,10rem)] font-black leading-[0.78] tracking-[-0.075em]">{project.title}</h1>
-              <p className="mt-8 max-w-3xl text-lg leading-8 text-white/55 sm:text-xl">{project.summary}</p>
+              <h1 className="mt-4 max-w-5xl text-[clamp(2.5rem,3.8vw,4rem)] font-black leading-[0.92] tracking-[-0.045em]">{project.title}</h1>
+              <p className="mt-4 max-w-3xl text-sm leading-6 text-white/55 sm:text-base sm:leading-7">{project.summary}</p>
             </div>
           </div>
 
-          <div className="case-study-media mt-14 grid gap-4 lg:grid-cols-[1fr_0.34fr]">
-            <div className="group relative aspect-[16/8] min-h-72 overflow-hidden rounded-xl border border-white/10 bg-[#111620]">
-              <Image src={project.image} alt={project.imageAlt} fill priority sizes="(max-width: 1024px) 100vw, 72vw" unoptimized={project.unoptimized} className="object-cover object-top transition duration-700 group-hover:scale-[1.025]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#090c12]/70 via-transparent to-transparent" />
-              <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.13em]">
+          <div className="case-study-media mt-8 grid gap-4 lg:grid-cols-[1fr_0.34fr]">
+            <div className="group relative h-[clamp(260px,38vh,430px)] overflow-hidden rounded-xl border border-white/10 bg-[#111620]">
+              <Image src={project.image} alt="" fill sizes="(max-width: 1024px) 100vw, 72vw" aria-hidden="true" className="scale-110 object-cover opacity-25 blur-2xl" />
+              <div className="absolute inset-0 bg-black/25" />
+              <Image src={project.image} alt={project.imageAlt} fill priority sizes="(max-width: 1024px) 100vw, 72vw" unoptimized={project.unoptimized} className="z-10 object-contain object-center" />
+              <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#090c12]/65 via-transparent to-transparent" />
+              <div className="absolute inset-x-5 bottom-5 z-30 flex items-end justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.13em]">
                 <span>{project.association}</span>
                 <span className="rounded px-2.5 py-1.5 font-bold text-[#090c12]" style={{ backgroundColor: project.accent }}>{project.status}</span>
               </div>
             </div>
 
             {project.secondaryImage ? (
-              <div className="group relative min-h-[420px] overflow-hidden rounded-xl border border-white/10 bg-white lg:min-h-0">
+              <div className="group relative h-[clamp(260px,38vh,430px)] overflow-hidden rounded-xl border border-white/10 bg-white">
                 <Image src={project.secondaryImage} alt={project.secondaryImageAlt ?? `${project.title} supporting image`} fill sizes="(max-width: 1024px) 100vw, 25vw" className="object-contain object-center transition duration-700 group-hover:scale-[1.025]" />
                 <div className="absolute inset-x-0 bottom-0 bg-[#090c12]/88 px-4 py-3 text-center font-mono text-[8px] uppercase tracking-[0.14em] text-white backdrop-blur">{project.secondaryImageLabel ?? "Project media"}</div>
               </div>

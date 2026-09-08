@@ -386,16 +386,14 @@ a:focus-visible {
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.65), 0 0 32px rgba(114, 241, 184, 0.09);
 }
 
-.poster-capture {
-  transform: rotate(3deg);
-  transform-origin: bottom right;
-  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1), border-color 240ms ease, box-shadow 240ms ease;
+.supporting-media {
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), border-color 200ms ease, box-shadow 200ms ease;
 }
 
-.featured-build:hover .poster-capture {
-  transform: translate(-4px, -4px) rotate(0deg) scale(1.03);
-  border-color: rgba(114, 241, 184, 0.8);
-  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.7), 0 0 26px rgba(114, 241, 184, 0.12);
+.featured-build:hover .supporting-media {
+  transform: translateY(-3px);
+  border-color: rgba(114, 241, 184, 0.65);
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.55);
 }
 
 .preview-scan {
@@ -609,16 +607,11 @@ a:focus-visible {
 
   .featured-build:hover .preview-browser,
   .featured-build:hover .event-capture,
-  .featured-build:hover .poster-capture,
+  .featured-build:hover .supporting-media,
   .skill-module:hover,
   .skill-module:focus-visible,
   .skill-module-active {
     transform: none;
-  }
-
-  .poster-capture {
-    transform: none;
-    transition: none;
   }
 
   .reveal {
