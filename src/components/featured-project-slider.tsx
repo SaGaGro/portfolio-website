@@ -4,11 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowIcon } from "@/components/arrow-icon";
-import type { Project } from "@/data/portfolio";
+import type { WorkItem } from "@/data/portfolio";
 
 const slideDuration = 5000;
 
-export function FeaturedProjectSlider({ projects }: { projects: readonly Project[] }) {
+export function FeaturedProjectSlider({ projects }: { projects: readonly WorkItem[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const project = projects[activeIndex];
@@ -38,12 +38,12 @@ export function FeaturedProjectSlider({ projects }: { projects: readonly Project
       className="featured-build group mt-14 overflow-hidden rounded-2xl border border-[#293140] bg-[#090c12] text-white shadow-[0_28px_80px_rgba(9,12,18,0.18)]"
       role="region"
       aria-roledescription="carousel"
-      aria-label="Featured projects"
+      aria-label="Featured work"
     >
       <div className="flex min-h-12 flex-wrap items-center justify-between gap-3 border-b border-white/10 bg-[#0d1119] px-4 py-2 font-mono text-[9px] uppercase tracking-[0.12em] text-white/35 sm:px-5">
         <div className="flex items-center gap-3">
           <span className="status-dot size-1.5 rounded-full bg-[#72f1b8]" />
-          <span>Featured project / {project.number}</span>
+          <span>Featured work / {project.number}</span>
         </div>
 
         <div className="flex items-center gap-2">
@@ -86,7 +86,7 @@ export function FeaturedProjectSlider({ projects }: { projects: readonly Project
                 {project.secondaryImage ? (
                   <div className={`supporting-media relative w-full min-w-24 overflow-hidden rounded-md border border-white/25 bg-white shadow-[0_18px_46px_rgba(0,0,0,0.6)] ${project.secondaryImageOrientation === "landscape" ? "aspect-[4/3]" : "aspect-[3/4]"}`}>
                     <Image src={project.secondaryImage} alt={project.secondaryImageAlt ?? `${project.title} supporting image`} fill sizes="(max-width: 640px) 35vw, 240px" className="object-contain object-center" />
-                    <span className="absolute inset-x-0 bottom-0 bg-[#090c12]/85 px-2 py-1.5 text-center font-mono text-[7px] uppercase tracking-[0.12em] text-white backdrop-blur">{project.secondaryImageLabel ?? "Project media"}</span>
+                    <span className="absolute inset-x-0 bottom-0 bg-[#090c12]/85 px-2 py-1.5 text-center font-mono text-[7px] uppercase tracking-[0.12em] text-white backdrop-blur">{project.secondaryImageLabel ?? "Work media"}</span>
                   </div>
                 ) : null}
               </div>
@@ -119,7 +119,7 @@ export function FeaturedProjectSlider({ projects }: { projects: readonly Project
             <p className="font-mono text-[9px] uppercase tracking-[0.13em] text-white/30">{project.issuer}</p>
             <p className="mt-2 text-sm text-white/50">{project.association}</p>
             <Link href={project.href} className="dev-primary group mt-6 inline-flex items-center gap-3 rounded-md px-4 py-3 font-mono text-[10px] font-bold uppercase tracking-[0.1em] text-[#090c12]" style={{ backgroundColor: project.accent }}>
-              Open case study
+              View work details
               <ArrowIcon className="size-3.5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
             </Link>
           </div>
@@ -127,7 +127,7 @@ export function FeaturedProjectSlider({ projects }: { projects: readonly Project
       </div>
 
       <div className="flex items-center justify-between border-t border-white/10 bg-[#0d1119] px-5 py-3">
-        <div className="flex gap-2" role="tablist" aria-label="Choose featured project">
+        <div className="flex gap-2" role="tablist" aria-label="Choose featured work">
           {projects.map((item, index) => (
             <button key={item.slug} type="button" role="tab" aria-selected={index === activeIndex} aria-label={`Show ${item.title}`} onClick={() => setActiveIndex(index)} className={`h-1.5 rounded-full transition-all ${index === activeIndex ? "w-10" : "w-4 bg-white/15 hover:bg-white/35"}`} style={index === activeIndex ? { backgroundColor: item.accent } : undefined} />
           ))}

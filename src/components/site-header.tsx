@@ -28,7 +28,7 @@ export function SiteHeader() {
 
         <nav className="hidden items-center rounded-md border border-white/10 bg-[#111620] p-1 font-mono md:flex" aria-label="Main navigation">
           {navItems.map((item, index) => {
-            const isActive = pathname === item.href;
+            const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
             return (
               <Link
                 key={item.href}
@@ -44,8 +44,8 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link href="/contact" className="nav-contact group hidden items-center gap-3 rounded-md bg-[#72f1b8] px-4 py-3 font-mono text-[10px] font-bold uppercase tracking-[0.08em] text-[#090c12] sm:inline-flex">
-            Initialize contact
+          <Link href="/resume" className="nav-contact group hidden items-center gap-3 rounded-md bg-[#72f1b8] px-4 py-3 font-mono text-[10px] font-bold uppercase tracking-[0.08em] text-[#090c12] sm:inline-flex">
+            View resume
             <ArrowIcon className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
 
@@ -65,7 +65,7 @@ export function SiteHeader() {
         <nav id="mobile-navigation" className="mobile-nav border-t border-white/10 bg-[#090c12] px-5 py-4 font-mono md:hidden" aria-label="Mobile navigation">
           <div className="mx-auto grid max-w-[1440px] gap-1">
             {navItems.map((item, index) => {
-              const isActive = pathname === item.href;
+              const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
               return (
                 <Link
                   key={item.href}
@@ -79,8 +79,8 @@ export function SiteHeader() {
                 </Link>
               );
             })}
-            <Link href="/contact" onClick={() => setIsOpen(false)} className="mt-2 flex items-center justify-between rounded-md bg-[#72f1b8] px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-[#090c12] sm:hidden">
-              Initialize contact <ArrowIcon className="size-4" />
+            <Link href="/resume" onClick={() => setIsOpen(false)} className="mt-2 flex items-center justify-between rounded-md bg-[#72f1b8] px-4 py-3 text-xs font-bold uppercase tracking-[0.1em] text-[#090c12] sm:hidden">
+              View resume <ArrowIcon className="size-4" />
             </Link>
           </div>
         </nav>

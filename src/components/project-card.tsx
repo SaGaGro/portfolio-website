@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowIcon } from "@/components/arrow-icon";
-import type { Project } from "@/data/portfolio";
+import type { WorkItem } from "@/data/portfolio";
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project }: { project: WorkItem }) {
   return (
     <article className="group overflow-hidden rounded-[2rem] border border-black/10 bg-white">
       <Link href={project.href} className="block">
@@ -25,7 +25,7 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
         <div className="grid gap-6 p-7 sm:grid-cols-[1fr_auto] sm:items-end">
           <div>
-            <p className="mb-3 text-xs uppercase tracking-[0.18em] text-black/40">Case study {project.number}</p>
+            <p className="mb-3 text-xs uppercase tracking-[0.18em] text-black/40">Work entry {project.number}</p>
             <h3 className="font-display text-4xl tracking-[-0.035em]">{project.title}</h3>
             <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.12em] text-black/40">{project.context}</p>
             <p className="mt-3 max-w-xl leading-7 text-black/55">{project.summary}</p>

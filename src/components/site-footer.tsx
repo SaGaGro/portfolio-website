@@ -16,6 +16,7 @@ export function SiteFooter() {
           </div>
           <nav className="grid grid-cols-2 gap-3 self-end text-sm text-white/65 lg:justify-self-end" aria-label="Footer navigation">
             {navItems.map((item) => <Link key={item.href} href={item.href} className="transition hover:text-white">{item.label}</Link>)}
+            <Link href="/resume" className="transition hover:text-white">Resume</Link>
             <a href="https://github.com/SaGaGro" target="_blank" rel="noreferrer" className="transition hover:text-white">GitHub</a>
           </nav>
         </div>

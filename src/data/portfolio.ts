@@ -1,6 +1,7 @@
 export const navItems = [
   { label: "Home", href: "/" },
   { label: "Work", href: "/work" },
+  { label: "Projects", href: "/projects" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ] as const;
@@ -43,7 +44,7 @@ export const stackGroups = [
 
 export type StackGroupId = (typeof stackGroups)[number]["id"];
 
-export type Project = {
+export type WorkItem = {
   number: string;
   slug: string;
   title: string;
@@ -74,7 +75,7 @@ export type Project = {
   };
 };
 
-export const projects = [
+export const workItems = [
   {
     number: "01",
     slug: "code-quest",
@@ -231,10 +232,10 @@ export const projects = [
       outcome: "Advanced to the Top 20 teams in the Samsung × KBTG Digital Fraud Cybersecurity Hackathon and completed the workshop session held on 29 January 2026.",
     },
   },
-] as const satisfies readonly Project[];
+] as const satisfies readonly WorkItem[];
 
-export function getProjectBySlug(slug: string): Project | undefined {
-  return projects.find((project) => project.slug === slug);
+export function getWorkBySlug(slug: string): WorkItem | undefined {
+  return workItems.find((item) => item.slug === slug);
 }
 
 export const capabilities = [

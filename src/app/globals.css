@@ -479,6 +479,16 @@ a:focus-visible {
   background: rgba(114, 241, 184, 0.045);
 }
 
+.resume-entry {
+  transition: padding 180ms ease, background 180ms ease;
+}
+
+.resume-entry:hover {
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  background: rgba(114, 241, 184, 0.06);
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(36px);
@@ -618,5 +628,31 @@ a:focus-visible {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  .dev-navbar,
+  body > footer,
+  .resume-no-print {
+    display: none !important;
+  }
+
+  .resume-page {
+    max-width: none;
+    padding: 0;
+  }
+
+  .resume-entry {
+    break-inside: avoid;
   }
 }

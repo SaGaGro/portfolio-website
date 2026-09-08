@@ -109,7 +109,7 @@ export function HeroStage() {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/work" className="dev-primary group inline-flex items-center gap-3 rounded-md bg-[#72f1b8] px-5 py-3 text-sm font-bold text-[#090c12]">View projects <ArrowIcon className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></Link>
+              <Link href="/work" className="dev-primary group inline-flex items-center gap-3 rounded-md bg-[#72f1b8] px-5 py-3 text-sm font-bold text-[#090c12]">View work <ArrowIcon className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></Link>
               <Link href="/about" className="dev-secondary rounded-md border border-white/15 px-5 py-3 font-mono text-xs text-white/70">./about-me</Link>
             </div>
           </div>
