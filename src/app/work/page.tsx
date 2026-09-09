@@ -19,17 +19,6 @@ export default function WorkPage() {
           </div>
         ))}
       </div>
-      <div className="mt-24 rounded-[2rem] bg-[#171b18] p-8 text-white sm:p-12">
-        <p className="text-xs uppercase tracking-[0.2em] text-[#d9ff62]">Work detail format</p>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {["Context", "Approach", "Journey", "Outcome"].map((step, index) => (
-            <div key={step} className="border-t border-white/20 pt-4">
-              <span className="text-xs text-white/35">0{index + 1}</span>
-              <p className="mt-6 font-display text-3xl">{step}</p>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }
