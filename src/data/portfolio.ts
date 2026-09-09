@@ -306,6 +306,41 @@ export const workItems = [
       outcome: "Presented at EENET 2026 with 92.00% structural accuracy for JSON generation, a 96.91% F1-score for Feng Shui rule detection, and 100% precision with no false positives in non-violation cases.",
     },
   },
+  {
+    number: "07",
+    slug: "buddy-builder-tech-idea-2026",
+    title: "BUDDY BUILDER",
+    summary: "A technology and innovation concept for creating a bedroom that reflects personal preferences while aligning the layout with Feng Shui principles.",
+    tags: ["Technology Innovation", "Bedroom Planning", "Feng Shui"],
+    status: "1st Place",
+    href: "/work/buddy-builder-tech-idea-2026",
+    accent: "#f472b6",
+    image: "/images/tech-idea-2026-buddy-builder.jpg",
+    imageAlt: "TECH IDEA 2026 winners and participants at Sripatum University",
+    unoptimized: true,
+    context: "TECH IDEA 2026 · Jul 2026",
+    association: "Associated with Sripatum University",
+    year: "Jul 2026",
+    eyebrow: "1st Place — TECH IDEA 2026",
+    issuer: "Sripatum University",
+    highlights: [
+      { label: "Result", value: "1st Place" },
+      { label: "Competition", value: "University-level innovation" },
+      { label: "Project", value: "BUDDY BUILDER" },
+    ],
+    caseStudy: {
+      challenge: "Bring personal bedroom preferences and Feng Shui considerations together in one technology-driven room-planning concept.",
+      solution: "BUDDY BUILDER presents the idea of helping people shape a bedroom they like while considering a layout that aligns with Feng Shui principles.",
+      features: ["Preference-centred bedroom planning", "Feng Shui-informed layout concept", "Technology and innovation focus", "University competition presentation"],
+      process: [
+        { step: "01", title: "Define the room-planning problem", description: "Explore how personal taste and Feng Shui considerations can create competing requirements in bedroom planning." },
+        { step: "02", title: "Frame the BUDDY BUILDER concept", description: "Shape a clear product idea around the promise: a bedroom you like, with the Feng Shui that feels right." },
+        { step: "03", title: "Develop the innovation pitch", description: "Present the concept, intended value, and potential role of technology in the room-planning experience." },
+        { step: "04", title: "Compete at TECH IDEA 2026", description: "Present BUDDY BUILDER at Sripatum University’s technology and innovation competition." },
+      ],
+      outcome: "Awarded 1st Place at TECH IDEA 2026, a university-level technology and innovation competition at Sripatum University.",
+    },
+  },
 ] as const satisfies readonly WorkItem[];
 
 export function getWorkBySlug(slug: string): WorkItem | undefined {
