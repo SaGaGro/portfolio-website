@@ -40,7 +40,7 @@ export default function AboutPage() {
               The rest is understanding the problem, testing the idea, and communicating why the result matters.
             </p>
             <div className="mt-8 flex flex-wrap gap-2 font-mono text-[9px] uppercase tracking-[0.12em] text-black/45">
-              {['Build', 'Research', 'Present', 'Compete'].map((item) => (
+              {['Web', 'Mobile', 'Backend', 'AI Systems', 'Research'].map((item) => (
                 <span key={item} className="rounded border border-black/15 bg-white px-3 py-2 transition hover:-translate-y-0.5 hover:border-[#0b9f76]/50 hover:text-[#0b9f76]">{item}</span>
               ))}
             </div>

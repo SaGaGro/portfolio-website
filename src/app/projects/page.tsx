@@ -13,13 +13,13 @@ export default function ProjectsPage() {
       <header className="border-t border-black/15 pt-5">
         <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-[9px] uppercase tracking-[0.16em] text-black/35">
           <span className="font-bold text-[#0b9f76]">Projects / product_builds</span>
-          <span>{String(projectItems.length).padStart(2, "0")} documented project</span>
+          <span>{String(projectItems.length).padStart(2, "0")} documented projects</span>
         </div>
-        <div className="mt-10 grid gap-7 lg:grid-cols-[0.32fr_1fr] lg:items-end">
+        <div className="mt-8 grid gap-6 lg:grid-cols-[0.28fr_1fr] lg:items-end">
           <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-black/35">Designed and developed</p>
           <div>
-            <h1 className="max-w-5xl font-display text-[clamp(3.3rem,6.5vw,6.2rem)] leading-[0.88] tracking-[-0.065em]">Products shaped from real problems.</h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-black/55">Projects focus on the software itself: requirements, product decisions, user flows, implementation, and the experience delivered.</p>
+            <h1 className="max-w-4xl font-display text-[clamp(2.75rem,5vw,4.75rem)] leading-[0.92] tracking-[-0.055em]">Products shaped from real problems.</h1>
+            <p className="mt-5 max-w-3xl text-base leading-7 text-black/55 sm:text-lg sm:leading-8">Projects focus on the software itself: requirements, product decisions, user flows, implementation, and the experience delivered.</p>
           </div>
         </div>
       </header>

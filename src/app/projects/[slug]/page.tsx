@@ -33,7 +33,9 @@ export default async function SoftwareProjectPage({ params }: SoftwareProjectPag
 
   if (!project) notFound();
 
-  const previewItems = project.galleryGroups[0]?.items ?? [];
+  const previewGroup = project.galleryGroups[0];
+  const previewItems = previewGroup?.items ?? [];
+  const isPortraitPreview = previewItems.every((item) => item.orientation === "portrait");
   const currentIndex = projectItems.findIndex((item) => item.slug === project.slug);
   const nextProject = projectItems.length > 1 ? projectItems[(currentIndex + 1) % projectItems.length] : null;
 
@@ -64,12 +66,12 @@ export default async function SoftwareProjectPage({ params }: SoftwareProjectPag
           <div className="dev-grid mt-10 overflow-hidden rounded-xl border border-white/10 bg-[#0d1119]">
             <div className="flex h-11 items-center justify-between border-b border-white/10 px-4 font-mono text-[8px] uppercase tracking-[0.13em] text-white/25">
               <span className="flex gap-1.5" aria-hidden="true"><span className="size-1.5 rounded-full bg-[#ff6b5f]" /><span className="size-1.5 rounded-full bg-[#ffc857]" /><span className="size-1.5 rounded-full bg-[#72f1b8]" /></span>
-              <span>slideme / customer_app</span>
+              <span>{project.slug} / {previewGroup?.id ?? "interface"}</span>
               <span>{String(previewItems.length).padStart(2, "0")} screens</span>
             </div>
-            <div className="mx-auto grid max-w-5xl grid-cols-3 items-end gap-2 p-4 sm:gap-5 sm:p-8 lg:gap-8 lg:px-12">
+            <div className={`mx-auto grid max-w-5xl items-end gap-2 p-4 sm:gap-5 sm:p-8 lg:gap-8 lg:px-12 ${isPortraitPreview ? "grid-cols-3" : "grid-cols-1 sm:grid-cols-2"}`}>
               {previewItems.slice(0, 3).map((item, index) => (
-                <div key={item.src} className={`relative aspect-[402/874] overflow-hidden rounded-[0.65rem] border border-white/15 bg-white shadow-[0_22px_55px_rgba(0,0,0,0.38)] transition duration-500 hover:-translate-y-2 sm:rounded-[1rem] ${index === 1 ? "mb-7" : ""}`}>
+                <div key={item.src} className={`relative overflow-hidden rounded-[0.65rem] border border-white/15 bg-white shadow-[0_22px_55px_rgba(0,0,0,0.38)] transition duration-500 hover:-translate-y-2 sm:rounded-[1rem] ${item.orientation === "portrait" ? "aspect-[402/874]" : "aspect-video"} ${isPortraitPreview && index === 1 ? "mb-7" : ""}`}>
                   <Image src={item.src} alt={item.alt} fill sizes="(max-width: 1024px) 30vw, 22vw" className="object-contain" />
                 </div>
               ))}
@@ -96,7 +98,7 @@ export default async function SoftwareProjectPage({ params }: SoftwareProjectPag
           <div className="grid gap-12 md:grid-cols-2">
             <div>
               <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-[#0b9f76]">The starting point</p>
-              <h2 className="mt-5 text-3xl font-black tracking-[-0.045em] sm:text-4xl">A real brief, not a fictional prompt.</h2>
+              <h2 className="mt-5 text-3xl font-black tracking-[-0.045em] sm:text-4xl">Start with the problem, not the interface.</h2>
               <p className="mt-5 text-base leading-8 text-black/55">{project.brief}</p>
             </div>
             <div>
@@ -149,10 +151,10 @@ export default async function SoftwareProjectPage({ params }: SoftwareProjectPag
               </div>
             </div>
 
-            <div className="mt-10 grid gap-4 md:grid-cols-3">
+            <div className={`mt-10 grid gap-4 ${group.items.length === 1 ? "md:grid-cols-1" : group.items.every((item) => item.orientation === "portrait") ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
               {group.items.map((item, index) => (
                 <article key={item.src} className="group overflow-hidden rounded-xl border border-black/10 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(9,12,18,0.1)]">
-                  <div className="dev-grid relative h-[520px] overflow-hidden border-b border-white/10 bg-[#090c12] p-4 sm:h-[600px] lg:h-[560px]">
+                  <div className={`dev-grid relative overflow-hidden border-b border-white/10 bg-[#090c12] p-4 ${item.orientation === "portrait" ? "h-[520px] sm:h-[600px] lg:h-[560px]" : "aspect-video"}`}>
                     <Image src={item.src} alt={item.alt} fill sizes="(max-width: 767px) 100vw, 33vw" className="object-contain object-center p-4 transition duration-500 group-hover:scale-[1.015]" />
                   </div>
                   <div className="p-6">
@@ -170,7 +172,7 @@ export default async function SoftwareProjectPage({ params }: SoftwareProjectPag
           <div className="grid gap-10 lg:grid-cols-[0.3fr_1fr]">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.17em] text-[#72f1b8]">Tech stack</p>
             <div>
-              <h2 id="technology-heading" className="text-3xl font-black tracking-[-0.045em] sm:text-4xl">Built across mobile and backend.</h2>
+              <h2 id="technology-heading" className="text-3xl font-black tracking-[-0.045em] sm:text-4xl">Built for the product&apos;s real requirements.</h2>
               <div className="mt-7 flex flex-wrap gap-2">
                 {project.tags.map((tag) => <span key={tag} className="rounded-md border border-white/10 bg-[#111620] px-4 py-3 font-mono text-[9px] uppercase tracking-[0.1em] text-white/55 transition hover:border-[#72f1b8]/45 hover:text-[#72f1b8]">{tag}</span>)}
               </div>

@@ -3,6 +3,17 @@
 import Link from "next/link";
 import { useState } from "react";
 import { ArrowIcon } from "@/components/arrow-icon";
+import { stackGroups } from "@/data/portfolio";
+
+const skillCode = [
+  "{",
+  ...stackGroups.flatMap((group, groupIndex) => [
+    `  "${group.id}": [`,
+    ...group.items.map((item, itemIndex) => `    "${item.name}"${itemIndex === group.items.length - 1 ? "" : ","}`),
+    `  ]${groupIndex === stackGroups.length - 1 ? "" : ","}`,
+  ]),
+  "}",
+];
 
 const profileFiles = [
   {
@@ -33,18 +44,8 @@ const profileFiles = [
     title: "Current toolkit",
     status: "Growing",
     statusTone: "text-[#8b7cff]",
-    description: "The tools currently shaping this portfolio, organized from interface work through delivery.",
-    code: [
-      "{",
-      "  \"frontend\": [",
-      "    \"Next.js\", \"React\",",
-      "    \"TypeScript\", \"Tailwind CSS\"",
-      "  ],",
-      "  \"backend\": [\"Node.js\", \"REST APIs\"],",
-      "  \"tools\": [\"Git\", \"GitHub\", \"Figma\"],",
-      "  \"next\": \"Keep learning by building\"",
-      "}",
-    ],
+    description: "A cross-platform toolkit spanning frontend, mobile, backend, databases, AI systems, and product delivery.",
+    code: skillCode,
   },
   {
     id: "current",

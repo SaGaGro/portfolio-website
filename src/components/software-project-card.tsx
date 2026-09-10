@@ -4,7 +4,9 @@ import { ArrowIcon } from "@/components/arrow-icon";
 import type { SoftwareProject } from "@/data/projects";
 
 export function SoftwareProjectCard({ project }: { project: SoftwareProject }) {
-  const previewItems = project.galleryGroups[0]?.items ?? [];
+  const previewGroup = project.galleryGroups[0];
+  const previewItems = previewGroup?.items ?? [];
+  const isPortraitPreview = previewItems.every((item) => item.orientation === "portrait");
 
   return (
     <article className="group overflow-hidden rounded-xl border border-black/12 bg-white shadow-[0_20px_60px_rgba(9,12,18,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(9,12,18,0.13)]">
@@ -29,16 +31,16 @@ export function SoftwareProjectCard({ project }: { project: SoftwareProject }) {
           </div>
         </div>
 
-        <div className="dev-grid bg-[#090c12] p-4 sm:p-6">
-          <div className="overflow-hidden rounded-lg border border-white/10 bg-[#0d1119]">
+        <div className="dev-grid flex items-center bg-[#090c12] p-4 sm:p-6">
+          <div className="w-full overflow-hidden rounded-lg border border-white/10 bg-[#0d1119]">
             <div className="flex h-10 items-center justify-between border-b border-white/10 px-4 font-mono text-[8px] uppercase tracking-[0.13em] text-white/25">
               <span className="flex gap-1.5" aria-hidden="true"><span className="size-1.5 rounded-full bg-[#ff6b5f]" /><span className="size-1.5 rounded-full bg-[#ffc857]" /><span className="size-1.5 rounded-full bg-[#72f1b8]" /></span>
-              <span>customer_app / preview</span>
+              <span>{previewGroup?.id ?? "interface"} / preview</span>
               <span>{String(previewItems.length).padStart(2, "0")} screens</span>
             </div>
-            <div className="grid grid-cols-3 items-end gap-2 p-3 sm:gap-4 sm:p-6">
+            <div className={`grid items-end gap-2 p-3 sm:gap-4 sm:p-6 ${isPortraitPreview ? "grid-cols-3" : "grid-cols-1 sm:grid-cols-2"}`}>
               {previewItems.slice(0, 3).map((item, index) => (
-                <div key={item.src} className={`relative aspect-[402/874] overflow-hidden rounded-[0.7rem] border border-white/15 bg-white shadow-2xl transition duration-500 group-hover:-translate-y-1 sm:rounded-[1rem] ${index === 1 ? "mb-5" : ""}`} style={{ transitionDelay: `${index * 45}ms` }}>
+                <div key={item.src} className={`relative overflow-hidden rounded-[0.7rem] border border-white/15 bg-white shadow-2xl transition duration-500 group-hover:-translate-y-1 sm:rounded-[1rem] ${item.orientation === "portrait" ? "aspect-[402/874]" : "aspect-video"} ${isPortraitPreview && index === 1 ? "mb-5" : ""}`} style={{ transitionDelay: `${index * 45}ms` }}>
                   <Image src={item.src} alt={item.alt} fill sizes="(max-width: 1024px) 30vw, 20vw" className="object-contain" />
                 </div>
               ))}
